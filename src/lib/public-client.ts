@@ -8,8 +8,9 @@ import type { Database } from "@/integrations/supabase/types";
  * Must be called inside a handler: process.env is server-only.
  */
 export function publicClient(userToken?: string) {
-  const url = process.env["SUPABASE_URL"];
-  const key = process.env["SUPABASE_PUBLISHABLE_KEY"];
+    const url = process.env["SUPABASE_URL"] || (typeof import.meta !== "undefined" ? import.meta.env?.["VITE_SUPABASE_URL"] : undefined);
+  const key = process.env["SUPABASE_PUBLISHABLE_KEY"] || (typeof import.meta !== "undefined" ? import.meta.env?.["VITE_SUPABASE_PUBLISHABLE_KEY"] : undefined);
+
   if (!url || !key) {
     throw new Error("Missing SUPABASE_URL / SUPABASE_PUBLISHABLE_KEY");
   }
