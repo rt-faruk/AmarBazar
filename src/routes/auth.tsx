@@ -87,7 +87,7 @@ function AuthPage() {
       email: form.email.trim(),
       password: form.password,
       options: {
-        emailRedirectTo: window.location.origin,
+        emailRedirectTo: "https://amarbazar.of19957.workers.dev",
         data: { full_name: form.full_name.trim(), phone: form.phone.trim() },
       },
     });
